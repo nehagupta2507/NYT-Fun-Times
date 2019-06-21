@@ -2,23 +2,89 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Bujumbura Data</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+    <title>Document</title>
 </head>
 
-<body>
-  <!-- Retrieved data will be dumped here -->
-  <div class="city"></div>
-  <div class="wind"></div>
-  <div class="humidity"></div>
-  <div class="temp"></div>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    // This is our API key
-    var APIKey = "166a433c57516f51dfab1f7edaed8413";
+<body id="background">
 
-    // Here we are building the URL we need to query the database
-    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?q=election&api-key=Ygr8fsMC2n7esXN8Dfcqxy86smMt87Tw";
+    <div class="container" id="banner">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center">New York Times Fun Times</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">Search Parameters</h2>
+            </div>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="searchTerm">Search Term</label>
+                <input type="search" class="form-control" id="searchTerm">
+            </div>
+            <div class="form-group">
+                <label for="retrieveRecords">Number of Records to Retrieve</label>
+                <select class="form-control" id="records">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="startYear">Start Year (Optional)</label>
+                <input type="startYear" class="form-control" id="startYear">
+            </div>
+            <div class="form-group">
+                <label for="endYear">End Year (Optional)</label>
+                <input type="endYear" class="form-control" id="endYear">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button id="search">Search</button>
+                </div>
+                <div class="col-sm-6">
+                    <button id="clear">Clear Results</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <script type="text/javascript">
+    // This is our API key
+    var APIKey = "Ygr8fsMC2n7esXN8Dfcqxy86smMt87Tw";
+
+    let searchTerm = $('#searchTerm').val();
+    let numRecords = $('#records').val();
+    let yearStart = $('#startYear').val() ;
+    let yearEnd = $('#endYear').val();
+    
+    let optional = '';
+    if (yearStart !== '') {
+      optional += 'begin_date=' + yearStart  + '0101';
+    }
+    if (yearEnd !== '') {
+      optional += '&end_date=' + yearEnd  + '1230';
+    }
+    let searchBtn = $('#search');
+
+    searchBtn.click(function(event){
+    
+      event.preventDefault();
+    // https://api.nytimes.com/svc/search/v2/articlesearch.json?begin_date=20100101&end_date=20111230&api-key=kLum9kZVE7GfgNn2NRvRcCAMEd99yQsB
+    var queryURL = "https://api.nytimes.com/svc/search/v2/articlesearch.json?" + optional + "q=" + searchTerm + "&api-key=" + APIKey;
 
     // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
@@ -27,24 +93,12 @@
     })
       // We store all of the retrieved data inside of an object called "response"
       .then(function(response) {
-
         // Log the queryURL
         console.log(queryURL);
-
         // Log the resulting object
-        console.log(response);
-
-        // Transfer content to HTML
-        // $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-        // $(".wind").text("Wind Speed: " + response.wind.speed);
-        // $(".humidity").text("Humidity: " + response.main.humidity);
-        // $(".temp").text("Temperature (F) " + response.main.temp);
-
-        // Log the data in the console as well
-        // console.log("Wind Speed: " + response.wind.speed);
-        // console.log("Humidity: " + response.main.humidity);
-        // console.log("Temperature (F): " + response.main.temp);
+        console.log(response);        
       });
+    })
   </script>
 </body>
 
