@@ -5,3 +5,36 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+form {
+    color: white;
+}
+
+h1 {
+    color: white;
+    font-family: 'Homemade Apple', cursive;
+    font-size: 50px;
+}
+
+h2 {
+    color: white;
+    font-family: 'Amatic SC', cursive;
+}
+
+#banner {
+    margin-top: 20px;
+}
+
+form {
+    border: 3px solid white;
+    padding: 10px;
+}
+
+button {
+
+}
+
+label {
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+}
