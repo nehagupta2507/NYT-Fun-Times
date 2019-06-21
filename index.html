@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<body id="background">
+
+    <div class="container" id="banner">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="text-center">New York Times Fun Times</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="text-center">Search Parameters</h2>
+            </div>
+        </div>
+        <form>
+            <div class="form-group">
+                <label for="searchTerm">Search Term</label>
+                <input type="search" class="form-control" id="searchTerm">
+            </div>
+            <div class="form-group">
+                <label for="retrieveRecords">Number of Records to Retrieve</label>
+                <select class="form-control" id="records">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="startYear">Start Year (Optional)</label>
+                <input type="startYear" class="form-control" id="startYear">
+            </div>
+            <div class="form-group">
+                <label for="endYear">End Year (Optional)</label>
+                <input type="endYear" class="form-control" id="endYear">
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <button id="search">Search</button>
+                </div>
+                <div class="col-sm-6">
+                    <button id="clear">Clear Results</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+
+</body>
+
+</html>
